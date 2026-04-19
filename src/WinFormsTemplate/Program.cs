@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
+using System.Threading;
 using WinFormsTemplate.UI;
+using WinFormsTemplate.Core;
 
 namespace WinFormsTemplate
 {
@@ -17,7 +19,34 @@ namespace WinFormsTemplate
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            // *** Global Error Management
+            Application.ThreadException += new ThreadExceptionEventHandler(OnThreadException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(OnUnhandledException);
+
             Application.Run(new MainForm());
         }
+
+        // *** Global Error Management
+        private static void OnThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            Logger.Log("UI Thread Exception", e.Exception);
+
+            MessageBox.Show(
+                "An unexpected error occurred.",
+                "Error",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Error
+            );
+        }
+
+        private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            if (e.ExceptionObject is Exception ex)
+            {
+                Logger.Log("Unhandled Exception", ex);
+            }
+        }
+
     }
 }
