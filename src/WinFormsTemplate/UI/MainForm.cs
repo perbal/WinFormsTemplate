@@ -66,5 +66,13 @@ namespace WinFormsTemplate.UI
                 ApplicationPreference.SetInt(sPrefsHeight, this.Size.Height);
             }
         }
+
+        private void buttonAbout_Click(object sender, EventArgs e)
+        {
+            AboutDialog dlgAbout = new AboutDialog();
+
+            dlgAbout.ShowDialog(this);
+            dlgAbout.Dispose();
+        }
     }
 }

@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("WinFormsTemplate")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WinFormsTemplate")]
-[assembly: AssemblyCopyright("Copyright ©  2026")]
+[assembly: AssemblyCompany("BPSofT")]
+[assembly: AssemblyProduct("Win Forms Template")]
+[assembly: AssemblyCopyright("© 2026 - Bernard Perbal")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

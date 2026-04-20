@@ -5,7 +5,7 @@ namespace WinFormsTemplate.Core
 {
     public static class Logger
     {
-        private static readonly string sLogFile = "app.log";
+        private static readonly string sLogFile = "App.log";
 
         public static void Log(string sMessage, Exception ex)
         {
