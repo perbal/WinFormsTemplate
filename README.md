@@ -8,7 +8,7 @@ Base template for Windows Forms applications using C# (.NET Framework 3.5)
 - docs/ : documentation
 
 ## Features
-- Clean architecture (UI / Core)
+- Clean architecture (UI / Utilities / Core)
 - Ready to use template
 - Compatible with legacy .NET Framework 3.5
 
