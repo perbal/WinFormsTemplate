@@ -20,6 +20,9 @@ namespace WinFormsTemplate
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            // Ensure WinForms catches exceptions
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+
             // *** Global Error Management
             Application.ThreadException += new ThreadExceptionEventHandler(OnThreadException);
             AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(OnUnhandledException);
@@ -30,7 +33,14 @@ namespace WinFormsTemplate
         // *** Global Error Management
         private static void OnThreadException(object sender, ThreadExceptionEventArgs e)
         {
-            Logger.Log("UI Thread Exception", e.Exception);
+            try
+            {
+                Logger.Log("UI Thread Exception", e.Exception);
+            }
+            catch
+            {
+                // Prevent secondary crash during logging
+            }
 
             MessageBox.Show(
                 "An unexpected error occurred.",
@@ -42,11 +52,19 @@ namespace WinFormsTemplate
 
         private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-            if (e.ExceptionObject is Exception ex)
+            try
             {
-                Logger.Log("Unhandled Exception", ex);
+                Exception ex = e.ExceptionObject as Exception;
+
+                if (ex != null)
+                {
+                    Logger.Log("Unhandled Exception (IsTerminating=" + e.IsTerminating.ToString() + ")", ex);
+                }
+            }
+            catch
+            {
+                // Prevent secondary crash during logging
             }
         }
-
     }
 }

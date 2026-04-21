@@ -106,7 +106,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "AboutDialog";
             this.Load += new System.EventHandler(this.AboutDialog_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.AboutDialog_Paint);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
 

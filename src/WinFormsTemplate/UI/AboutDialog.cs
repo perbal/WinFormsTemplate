@@ -12,8 +12,6 @@ namespace WinFormsTemplate.UI
 {
     public partial class AboutDialog : Form
     {
-        static Icon icon;
-
         public AboutDialog()
         {
             InitializeComponent();
@@ -23,26 +21,25 @@ namespace WinFormsTemplate.UI
         {
             this.Text = "About " + Application.ProductName;
 
-            System.Resources.ResourceManager resources = new System.Resources.ResourceManager(typeof(MainForm));
-            icon = new Icon((System.Drawing.Icon)(resources.GetObject("$this.Icon")), 64, 64);
-
+            Icon icoSource = Properties.Resources.AppIcon;
+            Icon ico64 = new Icon(icoSource, 64, 64);
+            this.pictureBoxIcon.Image = ico64.ToBitmap();
 
             label1.Text = Application.ProductName + " - " + "Version " + AssemblyInfoHelper.GetMajorDotMinorVersion();
             label2.Text = AssemblyInfoHelper.GetCopyright();
 
-            this.buttonOK.Location = new Point((this.Width - buttonOK.Width) / 2, buttonOK.Location.Y);
-        }
-
-        private void AboutDialog_Paint(object sender, PaintEventArgs e)
-        {
-            Bitmap bmp = icon.ToBitmap();
-            this.pictureBoxIcon.Image = (Image)bmp;
+            this.buttonOK.Left = (this.ClientSize.Width - buttonOK.Width) / 2;
         }
 
         private void label3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.label3.LinkVisited = true;
-            System.Diagnostics.Process.Start("https://www.perbal.net/home/");
+
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+             {
+                FileName = "https://www.perbal.net/home/",
+                UseShellExecute = true
+             });
         }
     }
 }
