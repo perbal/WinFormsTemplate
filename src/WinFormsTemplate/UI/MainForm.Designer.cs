@@ -34,9 +34,10 @@
             // 
             // buttonAbout
             // 
+            this.buttonAbout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonAbout.Location = new System.Drawing.Point(12, 322);
             this.buttonAbout.Name = "buttonAbout";
-            this.buttonAbout.Size = new System.Drawing.Size(75, 27);
+            this.buttonAbout.Size = new System.Drawing.Size(80, 27);
             this.buttonAbout.TabIndex = 0;
             this.buttonAbout.Text = "&About...";
             this.buttonAbout.UseVisualStyleBackColor = true;
@@ -51,6 +52,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.MinimumSize = new System.Drawing.Size(200, 100);
             this.Name = "MainForm";
             this.Text = "Win Forms Template";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
