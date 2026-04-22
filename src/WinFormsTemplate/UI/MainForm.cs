@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using WinFormsTemplate.Core;
+using WinFormsTemplate.Utilities;
 
 namespace WinFormsTemplate.UI
 {
@@ -26,6 +27,7 @@ namespace WinFormsTemplate.UI
         private void MainForm_Load(object sender, EventArgs e)
         {
             ApplicationLoadPrefs();
+            this.Text = Application.ProductName + " " + AssemblyInfoHelper.GetMajorDotMinorVersion();
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
